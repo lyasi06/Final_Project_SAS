@@ -46,7 +46,7 @@ while(running)
 
 			else 
 			{
-				while(isNaN(age) || age < 18 )
+				while(isNaN(age) || age <= 18 )
 				{
 					console.log("age must be greater than 18 and only numbers")
 					age = Number(prompt("try again: "));
