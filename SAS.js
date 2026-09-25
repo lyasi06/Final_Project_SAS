@@ -27,7 +27,7 @@ while(running)
 			let politicalParty = prompt("Political Party: ");
 			if(politicalParty === "")
 			{
-				politicalParty === "Independent";
+				politicalParty = "Independent";
 			}
 			let age = Number(prompt("your age: "));
 			let isfound = false;
@@ -63,6 +63,8 @@ while(running)
 				console.log("==== cantidade added !! ====");
 			}
 			break;
+		case "2":
+
 		case "9":
 			console.log("good byee have a nice day")
 			running = false;
