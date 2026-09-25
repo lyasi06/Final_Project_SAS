@@ -64,7 +64,52 @@ while(running)
 			}
 			break;
 		case "2":
-
+			console.log("==== add multiple candidates ====");
+			const num = Number(prompt("How many Candidates u wanna enter: "))
+			for(let i = 1; i <= num; i++)
+			{
+				console.log(`===Candidate ${i}`);
+				const cin1 = prompt("CIN: ");
+				const lastName1 = prompt("LAST NAME: ");
+				const firstName1 = prompt("FIRST NAME: ");
+				let politicalParty1 = prompt("Political Party: ");
+				if(politicalParty1 === "")
+				{
+					politicalParty1 = "Independent";
+				}
+				let age1 = Number(prompt("your age: "));
+				let isfound1 = false;
+				for(let c of candidates)
+				{
+					if(c.cin === cin1)
+					{
+						isfound1 = true;
+						break;
+					}
+				}
+				if(isfound1)
+				{
+					console.log("CIN already exist");
+				}
+				else
+				{
+					while(isNaN(age1) || age1 <= 18 )
+					{
+						console.log("age must be greater than 18 and only numbers")
+						age1 = Number(prompt("try again: "));
+					}
+					candidates.push({
+						cin: cin1,
+						lastName: lastName1,
+						firstName: firstName1,
+						politicalParty: politicalParty1,
+						age: age1,
+						voters: []
+					})
+					console.log("==== cantidade added !! ====");
+				}
+			}
+			break;
 		case "9":
 			console.log("good byee have a nice day")
 			running = false;
