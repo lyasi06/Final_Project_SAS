@@ -110,11 +110,32 @@ while(running)
 				}
 			}
 			break;
-		case "9":
-			console.log("good byee have a nice day")
-			running = false;
-			break;
-		default:
-			console.log("invalid choice");
-	}
-}
+			case "3":
+				console.log("=== Candidates list ===")
+				if(candidates.length === 0)
+					{
+						console.log("There is no Candidate yet")
+					}
+					else
+					{
+						let count = 1;
+						for(let a of candidates)
+						{
+							console.log(`Candidate: ${count}`);
+							console.log(`CIN: ${a.cin}`)
+							console.log(`Name: ${a.firstName} ${a.lastName}`);
+							console.log(`Poltical Party: ${a.politicalParty}`);
+							console.log(`Age: ${a.age}`);
+							console.log(`Votes: ${a.voters.length}`);
+							count++;
+						}
+					}
+					break;
+					case "9":
+					console.log("good byee have a nice day")
+					running = false;
+					break;
+					default:
+						console.log("invalid choice");
+					}
+				}
