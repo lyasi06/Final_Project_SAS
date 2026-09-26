@@ -131,11 +131,50 @@ while(running)
 						}
 					}
 					break;
-					case "9":
-					console.log("good byee have a nice day")
-					running = false;
-					break;
-					default:
-						console.log("invalid choice");
+					case "4":
+						let voterCIN = prompt("Enter ur CIN: ");
+						let alreadyvoted = false;
+						for(let i of candidates)
+						{
+							if(i.voters.includes(voterCIN))
+							{
+								alreadyvoted = true;
+								break;
+							}
+
+						}
+						if(alreadyvoted)
+						{
+							console.log("you already voted !!");
+						}
+						else
+							{
+								let candidatecin = prompt("Candidate CIN: ");
+							let found = null;
+							for(let k of candidates)
+							{
+								if(k.cin === candidatecin)
+								{
+									found = k
+									break;
+								}
+							}
+							if(found === null)
+							{
+								console.log("Condidate not found");
+							}
+							else
+							{
+								found.voters.push(voterCIN);
+								console.log("vote is done");
+							}
+						}
+						break;
+						case "9":
+						console.log("good byee have a nice day")
+						running = false;
+						break;
+						default:
+							console.log("invalid choice");
+						}
 					}
-				}
