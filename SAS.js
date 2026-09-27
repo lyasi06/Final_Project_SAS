@@ -228,6 +228,79 @@ function voteforcandidate()
 							}
 						}
 }
+
+function editcandidatePoliticalparty()
+{
+	let cin = prompt("enter Candidate CNI: ");
+	let found = null;
+	for(let b of candidates)
+	{
+		if(b.cin === cin)
+		{
+			found = b;
+			break;
+		}
+
+	}
+	if(found === null)
+	{
+		console.log("candidate not found");
+	}
+	else
+		{
+			let newparty = prompt("enter new party: ")
+			found.politicalParty = newparty;
+			console.log("new party add");
+		}
+}
+
+
+function editcandidateAge()
+{
+	let cin = prompt("enter candidate CIN: ");
+	let found = null;
+	for(let n of candidates)
+	{
+		if(n.age === age)
+		{
+			found = n;
+			break;
+		}
+	}
+	if(found === null)
+	{
+		console.log("candidate not found");
+	}
+	else
+	{
+		let newage = prompt("Candidate new age: ")
+		found.age === newage;
+		console.log("new age add"); 
+	}
+}
+
+function Deleteacnadidate()
+{
+	let cin = prompt("Candidate cin: ");
+	let index = -1;
+	for(let l of candidates)
+	{
+		if(l.cin === cin)
+		{
+			index = candidates.indexOf(l);
+			break;
+		}
+	}
+	if(index === -1)
+	{
+		console.log("Candidate not found")
+	}
+	else
+	{
+		candidates.splice(index, 1);
+		console.log("Candidate deleted !!");
+	}
+}
 let running = true;
 
 while(running)
@@ -257,6 +330,13 @@ while(running)
 				case "4":
 					voteforcandidate();
 					break;
+					case "5":
+						editcandidatePoliticalparty();
+						editcandidateAge();
+						break;
+						case "6":
+							Deleteacnadidate();
+							break;
 					case "9":
 						console.log("good byee have a nice day")
 						running = false;
