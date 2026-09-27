@@ -105,6 +105,7 @@ function displayall()
 							console.log(`Political Party: ${a.politicalParty}`);
 							console.log(`Age: ${a.age}`);
 							console.log(`Votes: ${a.voters.length}`);
+							console.log("--------------------");
 							count++;
 						}
 					}
@@ -145,6 +146,7 @@ function displayall()
 							console.log(`Political Party: ${s.politicalParty}`);
 							console.log(`Age: ${s.age}`);
 							console.log(`Votes: ${s.voters.length}`);
+							console.log("--------------------");
 							count++;
 						}
 
@@ -177,6 +179,7 @@ function displayall()
 							console.log(`Political Party: ${x.politicalParty}`);
 							console.log(`Age: ${x.age}`);
 							console.log(`Votes: ${x.voters.length}`);
+							console.log("-----------------");
 							count++;
 						}
 					}
@@ -301,6 +304,87 @@ function Deleteacnadidate()
 		console.log("Candidate deleted !!");
 	}
 }
+
+function Searchcandidate()
+{
+	let lastName = prompt(" last name search: ");
+	let result = [];
+	for(let i of candidates)
+	{
+		if(i.lastName === lastName)
+		{
+			result.push(i);
+		}
+	}
+	if(result.length === 0)
+	{
+		console.log(" no candidate found")
+	}
+	else
+	{
+		let count = 1;
+		for(let z of result)
+		{
+			console.log(`==== cnadidate ${count} ====`);
+			console.log(`cin: ${z.cin}`);
+			console.log(`Name: ${z.firstName} ${z.lastName}`);
+			console.log(`Politicale Party: ${z.politicalParty}`);
+			console.log(`Age: ${z.age}`);
+			console.log(`Votes: ${z.voters.length}`);
+			console.log("-----------------");
+			count++;
+		}
+	}
+}
+
+
+function Electionstatistics()
+{
+	console.log(`Total Candidates: ${candidates.length}`);
+	let Totalvotees = 0;
+	for(let q of candidates)
+	{
+		Totalvotees += q.voters.length;
+	}
+	console.log(`Total Votes: ${Totalvotees}`);
+	let sorted = [];
+	let used = [];
+	for(let o = 0; o < candidates.length; o++)
+		{
+			let maxIndex = -1;
+			let maxVotes = -1;
+			for(let h = 0; h < candidates.length; h++)
+				{
+					if(!used.includes(h) && candidates[h].voters.length > maxVotes)
+						{
+							maxVotes = candidates[h].voters.length;
+							maxIndex = h;
+						}
+					}
+					sorted.push(candidates[maxIndex]);
+					used.push(maxIndex);
+				}
+				console.log("Top 3: ");
+				for(let i = 0; i < 3; i++)
+				{
+					console.log(`${i + 1}. ${sorted[i].firstName} ${sorted[i].lastName} ${sorted[i].voters.length}`);
+				}
+				const parties = {};
+				for (let c of candidates) {
+					if (parties[c.politicalParty] === undefined)
+					{
+						parties[c.politicalParty] = 1;
+					} else
+					{
+						 parties[c.politicalParty]++;
+						}
+					}
+					console.log("Candidates per party:");
+					for (let key in parties) {
+						console.log(`${key}: ${parties[key]}`);
+					}
+				}
+
 let running = true;
 
 while(running)
@@ -337,11 +421,17 @@ while(running)
 						case "6":
 							Deleteacnadidate();
 							break;
-					case "9":
-						console.log("good byee have a nice day")
-						running = false;
-						break;
-						default:
-							console.log("invalid choice");
-						}
-					}
+							case "7":
+								Searchcandidate();
+							break;
+							case "8":
+								Electionstatistics();
+								break;
+								case "9":
+									console.log("good byee have a nice day");
+									running = false;
+									break;
+									default:
+										console.log("invalid choice");
+									}
+								}
